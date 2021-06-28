@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Nav from './nav';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import './App.css';
+import SearchBar from './SearchBar';
+import axios from 'axios';
 
 
 class App extends Component {
@@ -13,6 +16,18 @@ class App extends Component {
       username: ''
     };
   }
+
+  async get_SearchResults(id) {
+    try{
+        let response = await axios.get(`http://localhost:8000/Anime_Creator_App/videos/${id}`);
+        this.setState({
+            search_results: response.data,
+        });
+    } catch (er){
+        console.log('ERROR in get_SearchResults', er)
+    }
+
+}
 
   componentDidMount() {
     if (this.state.logged_in) {
@@ -63,7 +78,7 @@ class App extends Component {
         this.setState({
           logged_in: true,
           displayed_form: '',
-          username: json.username
+          username: json.username,
         });
       });
   };
@@ -94,17 +109,24 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Nav
-          logged_in={this.state.logged_in}
-          display_form={this.display_form}
-          handle_logout={this.handle_logout}
-        />
-        {form}
-        <h3>
-          {this.state.logged_in
-            ? `Hello, ${this.state.username}`
-            : 'Please Log In'}
-        </h3>
+        <div className="center">
+            {form}
+        </div>
+        <div className="nav">
+            <h3>
+                {this.state.logged_in
+                    ? `Hello, ${this.state.username}`
+                    : 'Please Log In or Sign Up'}
+            </h3>
+            <Nav
+            logged_in={this.state.logged_in}
+            display_form={this.display_form}
+            handle_logout={this.handle_logout}
+            />
+        </div>
+        <div className="search">
+            {this.state.logged_in ? <SearchBar get_SearchResults={this.get_SearchResults.bind(this)}/> : null}
+        </div>
       </div>
     );
   }

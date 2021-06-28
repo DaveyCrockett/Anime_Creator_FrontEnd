@@ -1,0 +1,46 @@
+.App {
+    margin-left: 20px;
+    position: fixed;
+  }
+  
+  input {
+    display: block;
+    margin: 5px 0 5px;
+  }
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.center {
+    position: fixed;
+    top: 30%;
+    left: 40%;
+}
+
+.nav {
+    position: fixed;
+    top: 5%;
+    left: 2%;
+}
+
+.search {
+    position: fixed;
+    left: 20%;
+    top: 5%;
+    width: 50%;
+}
+
+.searchField {
+    width: 90%;
+    display:inline-block
+}
+
+.searchBtn {
+    display: inline-block;
+}

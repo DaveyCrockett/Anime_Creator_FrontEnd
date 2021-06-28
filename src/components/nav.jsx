@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 function Nav(props) {
   const logged_out_nav = (
     <ul>
-      <li onClick={() => props.display_form('login')}>login</li>
-      <li onClick={() => props.display_form('signup')}>signup</li>
+      <li onClick={() => props.display_form('login')}><button>login</button></li>
+      <li onClick={() => props.display_form('signup')}><button>signup</button></li>
     </ul>
   );
 
   const logged_in_nav = (
     <ul>
-      <li onClick={props.handle_logout}>logout</li>
+      <li onClick={props.handle_logout}><button>logout</button></li>
     </ul>
   );
   return <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>;
