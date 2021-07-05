@@ -44,3 +44,16 @@ ul li {
 .searchBtn {
     display: inline-block;
 }
+
+.friendList {
+    display: block;
+}
+
+.listOfFriends {
+    position: fixed;
+    right: 10%;
+    top: 5%;
+    width: 10%;
+    overflow: scroll;
+    height: 80%;
+}

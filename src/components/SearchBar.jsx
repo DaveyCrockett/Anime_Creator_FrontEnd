@@ -4,7 +4,7 @@ class SearchBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: '',       
+            id: '',     
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,18 +20,24 @@ class SearchBar extends Component {
         event.preventDefault();
         const id = this.state.id
         this.props.get_SearchResults(id);
-        this.setState({
-            id: ''
-        })
+        
+    }
+
+    displayResults(){
+        if (this.state.search_results !== undefined){
+        }
     }
 
     render() { 
         return ( 
-            <div className='searchContainer'>
-            <form onSubmit={this.handleSubmit}>
-                <input type='text' name='id' value={this.state.id} onChange={this.handleChange} placeholder='Enter Search'  className='searchField' />
-                <input type='submit' value='Search' className='searchBtn' />
-            </form>
+            <div>
+                <div className='searchContainer'>
+                <form onSubmit={this.handleSubmit}>
+                    <input type='text' name='id' value={this.state.id} onChange={this.handleChange} placeholder='Enter Search'  className='searchField' />
+                    <input type='submit' value='Search' className='searchBtn' />
+                </form>
+                </div>
+                {this.displayResults()}
             </div>
          );
     }
