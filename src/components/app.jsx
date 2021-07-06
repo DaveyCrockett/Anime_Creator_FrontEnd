@@ -3,10 +3,10 @@ import Nav from './nav';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import './App.css';
-import SearchBar from './SearchBar';
-import axios from 'axios';
 import UploadVideo from './UploadVideo';
 import FriendList from './FriendsList';
+import Search from './Search';
+
 
 class App extends Component {
   constructor(props) {
@@ -23,22 +23,7 @@ class App extends Component {
 
  
 
-  async get_SearchResults(id) {
-    try{
-        let response = await axios.get(`http://127.0.0.1:8000/Anime_Creator_App/videos/${id}/`, {
-          headers: {
-            Authorization: `JWT ${localStorage.getItem('token')}`
-          }
-        })
-        this.setState({
-            search_results: response.data,
-        });
-    } catch (er){
-        console.log('ERROR in get_SearchResults', er)
-    }
-
-}
-
+ 
   
 
   componentDidMount() {
@@ -138,12 +123,11 @@ class App extends Component {
             />
         </div>
         <div className="search">
-            {this.state.logged_in ? <div><SearchBar get_SearchResults={this.get_SearchResults.bind(this)}/> <br />
+            {this.state.logged_in ? <div><Search /> <br />
             <UploadVideo currentUser={this.state.username} /></div> : null}
         </div>
-        <div className="listOfFriends">
-          {this.state.logged_in ? <div><FriendList currentUser={this.state.username} /></div>: null}
-        </div>
+        
+          {this.state.logged_in ? <div className="listOfFriends"><FriendList currentUser={this.state.username} /></div>: null}
       </div>
     );
   }

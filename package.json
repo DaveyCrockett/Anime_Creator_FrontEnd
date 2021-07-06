@@ -15,7 +15,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-search": "^2.1.1",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "youtube-api-search": "0.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

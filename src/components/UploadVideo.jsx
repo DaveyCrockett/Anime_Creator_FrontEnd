@@ -64,7 +64,11 @@ class UploadVideo extends Component {
     }
 
     async addVideo(formData) {
-        await axios.post(``,formData, {
+        for (var value of formData.values()){
+            console.log(value)
+        }
+       
+        await axios.post(`http://127.0.0.1:8000/Anime_Creator_App/videos/`,formData, {
             headers: {
                 Authorization: `JWT ${localStorage.getItem('token')}`,
             }
@@ -80,6 +84,7 @@ class UploadVideo extends Component {
   render() {
     return (
         <div className="uploadForm">
+            <h3>Go Ahead and Upload a Video!</h3>
             <form id="UploadForm" name="UploadForm" onSubmit={(event) => this.handleSubmit(event)} encType="multipart/form-data" >
                 <label for="name">Enter Name of Video:</label>
                 <input type="text" id="name" name="name" onChange={(event) => this.handleChangeName(event)}></input>
