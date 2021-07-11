@@ -85,3 +85,10 @@ ul li {
   .list-group-item:hover {
     background-color: #eee;
   }
+
+
+.uploadVideo {
+  position: fixed;
+  left: 2%;
+  top: 20%;
+}

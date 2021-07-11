@@ -123,10 +123,9 @@ class App extends Component {
             />
         </div>
         <div className="search">
-            {this.state.logged_in ? <div><Search /> <br />
-            <UploadVideo currentUser={this.state.username} /></div> : null}
+            {this.state.logged_in ? <div><Search /></div> : null}
         </div>
-        
+        {this.state.logged_in ? <div className="uploadVideo"><UploadVideo currentUser={this.state.username} /></div> : null}
           {this.state.logged_in ? <div className="listOfFriends"><FriendList currentUser={this.state.username} /></div>: null}
       </div>
     );

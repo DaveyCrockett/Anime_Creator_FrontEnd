@@ -68,15 +68,15 @@ class UploadVideo extends Component {
             console.log(value)
         }
        
-        await axios.post(`http://127.0.0.1:8000/Anime_Creator_App/videos/`,formData, {
+        await axios.post(`https://fast.wistia.net/embed/iframe/`, {
             headers: {
-                Authorization: `JWT ${localStorage.getItem('token')}`,
+                Authorization: `aef6980d1a631cbcdd9e34c954c9b0a0a0f949bbcc8851daa95b07c6148d3acd`,
             }
             
             })
             .then(response => this.setState({
-            video: response.data,
-            username: this.state.username
+                video: response.data,
+                username: this.state.username
             }));
             console.log(this.state.video)
         }
@@ -84,7 +84,7 @@ class UploadVideo extends Component {
   render() {
     return (
         <div className="uploadForm">
-            <h3>Go Ahead and Upload a Video!</h3>
+            <h3>Upload a Video Here!</h3>
             <form id="UploadForm" name="UploadForm" onSubmit={(event) => this.handleSubmit(event)} encType="multipart/form-data" >
                 <label for="name">Enter Name of Video:</label>
                 <input type="text" id="name" name="name" onChange={(event) => this.handleChangeName(event)}></input>
