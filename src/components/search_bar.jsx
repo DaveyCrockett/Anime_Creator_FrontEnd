@@ -7,7 +7,11 @@ class SearchBar extends Component {
     super(props);
     this.state = { term: '',
                     project: {},
+                
                    };
+    this.videoSelect = this.videoSelect.bind(this);
+    this.get_SearchResults = this.get_SearchResults.bind(this);
+    this.get_project = this.get_project.bind(this);
   }
 
   onInputChange(term) {
@@ -37,14 +41,42 @@ class SearchBar extends Component {
           name: term
         }
         })
+        debugger
         console.log(response.data)
         this.setState({
             search_results: response.data,
-            project: this.state.project
+            project: this.state.project,
+            term: this.state.term
         });
+        for (let index = 0; index < this.state.search_results.data.length; index++){
+          if (this.state.search_results.data[index].attributes.name.includes(this.state.term)){
+            console.log(this.state.search_results.data[index].id)
+            this.videoSelect(this.state.search_results.data[index].id, this.state.term)
+          }
+        }
     } catch (er){
         console.log('ERROR in get_SearchResults', er)
     }
+
+}
+
+async videoSelect(hashedId, term) {
+  try{
+    let response = await axios.get(`https://api.wistia.com/v2/medias/${hashedId}.json?access_token=aef6980d1a631cbcdd9e34c954c9b0a0a0f949bbcc8851daa95b07c6148d3acd`, {
+    body: {
+      name: term
+    }
+    })
+    console.log(response.data)
+    this.setState({
+        selectedVideo: response.data,
+        project: this.state.project,
+        search_results: this.state.search_results
+    });
+    console.log(this.state.selectedVideo.data)
+} catch (er){
+    console.log('ERROR in get_SearchResults', er)
+}
 
 }
 
@@ -55,6 +87,7 @@ componentDidMount() {
 handleSubmit(event) {
   event.preventDefault();
   this.get_SearchResults(this.state.term, this.state.project.data[0])
+  
 }
 
   render() {
@@ -70,11 +103,12 @@ handleSubmit(event) {
             <button type="submit">Search</button>
           </form>
       </div>
-          {this.state.search_results ? <div> <VideoDetail search_results={this.state.search_results} thumbnailUrl={this.state.search_results.data[0].relationships.thumbnail.data.id} />
-          {console.log(this.state.search_results.data[0].attributes.url)}
+          {this.state.selectedVideo ? <div>{console.log(this.state.selectedVideo.data.id)} <VideoDetail search_results={this.state.search_results} videoUrl={this.state.selectedVideo.data.id} />
+          
           <VideoList
           onVideoSelect={search_results => this.setState({ search_results })}
           videoAttributes={this.state.search_results.data[0].attributes}
+          thumbnailUrl={this.state.search_results.data[0].relationships.thumbnail.data.id}
         /></div>: undefined}
           
       </div>

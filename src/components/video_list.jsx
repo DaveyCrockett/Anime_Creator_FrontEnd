@@ -10,6 +10,7 @@ const VideoList = (props) => {
         onVideoSelect = {props.onVideoSelect}
         key={props.videoAttributes.id}
         video={props.videoAttributes}
+        thumbnailUrl={props.thumbnailUrl}
         />
     </ul>
   )
