@@ -103,8 +103,7 @@ handleSubmit(event) {
             <button type="submit">Search</button>
           </form>
       </div>
-          {this.state.selectedVideo ? <div>{console.log(this.state.selectedVideo.data.id)} <VideoDetail search_results={this.state.search_results} videoUrl={this.state.selectedVideo.data.id} />
-          
+          {this.state.selectedVideo ? <div> <VideoDetail search_results={this.state.search_results}  selectedVideo={this.state.selectedVideo.data} videoUrl={this.state.selectedVideo.data.id} />
           <VideoList
           onVideoSelect={search_results => this.setState({ search_results })}
           videoAttributes={this.state.search_results.data[0].attributes}
