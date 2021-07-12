@@ -1,5 +1,6 @@
 import React from 'react';
 import SimpleRating from './SimpleRating';
+import Comments from './comments';
 
 
 const VideoDetail = ({ videoUrl, search_results, selectedVideo }) => {
@@ -22,6 +23,7 @@ const VideoDetail = ({ videoUrl, search_results, selectedVideo }) => {
         <div>{selectedVideo.attributes.name}</div>
         <div>{selectedVideo.attributes.description}</div>
         <div><SimpleRating /></div>
+        <div><Comments /></div>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "antd": "^4.16.7",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
     "box": "0.0.4",
@@ -16,6 +17,7 @@
     "http-proxy-middleware": "^2.0.0",
     "init": "^0.1.2",
     "make": "^0.8.1",
+    "moment": "^2.29.1",
     "node-waf": "^1.0.0",
     "prop-types": "^15.7.2",
     "rating": "^0.1.0",
@@ -24,6 +26,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-search": "^2.1.1",
+    "simple-react-comments": "^1.1.0",
     "typography": "^0.16.21",
     "web-vitals": "^1.1.2",
     "youtube-api-search": "0.0.5"
