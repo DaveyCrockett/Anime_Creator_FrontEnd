@@ -6,6 +6,7 @@ import './App.css';
 import UploadVideo from './UploadVideo';
 import FriendList from './FriendsList';
 import Search from './Search';
+import CreatorChat from './CreatorChat';
 
 
 class App extends Component {
@@ -127,6 +128,7 @@ class App extends Component {
         </div>
         {this.state.logged_in ? <div className="uploadVideo"><UploadVideo currentUser={this.state.username} /></div> : null}
           {this.state.logged_in ? <div className="listOfFriends"><FriendList currentUser={this.state.username} /></div>: null}
+          {this.state.logged_in ? <div className="creatorChat"><CreatorChat /></div>:null}
       </div>
     );
   }

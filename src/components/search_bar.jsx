@@ -41,7 +41,6 @@ class SearchBar extends Component {
           name: term
         }
         })
-        debugger
         console.log(response.data)
         this.setState({
             search_results: response.data,

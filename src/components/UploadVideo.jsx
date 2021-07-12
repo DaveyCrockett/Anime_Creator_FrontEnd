@@ -54,7 +54,7 @@ class UploadVideo extends Component {
 
     handleSubmit(event) {
         const data = new FormData()
-        data.append('video', this.state.video)
+        data.append('file', this.state.video)
         data.append('description', this.state.description)
         data.append('name', this.state.name)
         data.append('creator', this.state.creator)
@@ -68,12 +68,10 @@ class UploadVideo extends Component {
             console.log(value)
         }
        
-        await axios.post(`https://fast.wistia.net/embed/iframe/`, {
-            headers: {
-                Authorization: `aef6980d1a631cbcdd9e34c954c9b0a0a0f949bbcc8851daa95b07c6148d3acd`,
-            }
-            
-            })
+
+        await axios.post(`https://upload.wistia.com?access_token=6e23b76e85b652c9aea97d7a7c00dd0116b59de9af73e08da11bd65643558632&project_id=gil6c4acn6&`, formData, {
+            headers: {'Content-Type': 'multipart/form-data'},
+        })
             .then(response => this.setState({
                 video: response.data,
                 username: this.state.username
