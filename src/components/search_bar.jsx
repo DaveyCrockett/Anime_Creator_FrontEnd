@@ -12,6 +12,7 @@ class SearchBar extends Component {
     this.videoSelect = this.videoSelect.bind(this);
     this.get_SearchResults = this.get_SearchResults.bind(this);
     this.get_project = this.get_project.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   onInputChange(term) {
@@ -89,6 +90,17 @@ handleSubmit(event) {
   
 }
 
+handleClick(video) {
+  
+  this.setState({
+    selectedVideo: video,
+    search_results: this.state.search_results
+  })
+  console.log(this.state.selectedVideo)
+}
+
+
+
   render() {
     return (
       <div>
@@ -102,11 +114,12 @@ handleSubmit(event) {
             <button type="submit">Search</button>
           </form>
       </div>
+      {console.log(this.state.selectedVideo)}
           {this.state.selectedVideo ? <div> <VideoDetail search_results={this.state.search_results}  selectedVideo={this.state.selectedVideo.data} videoUrl={this.state.selectedVideo.data.id} />
           <VideoList
-          onVideoSelect={search_results => this.setState({ search_results })}
-          videoAttributes={this.state.search_results.data[0].attributes}
-          thumbnailUrl={this.state.search_results.data[0].relationships.thumbnail.data.id}
+          video={this.state.selectedVideo}
+          thumbnailUrl={this.state.selectedVideo.data.relationships.thumbnail.data.id}
+          handleClick={this.handleClick}
         /></div>: undefined}
           
       </div>

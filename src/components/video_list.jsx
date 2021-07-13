@@ -7,10 +7,10 @@ const VideoList = (props) => {
   return (
     <ul className="col-md-4 list-group">
       <VideoListItem
-        onVideoSelect = {props.onVideoSelect}
-        key={props.videoAttributes.id}
-        video={props.videoAttributes}
+        key={props.video.data.attributes.id}
+        video={props.video}
         thumbnailUrl={props.thumbnailUrl}
+        handleClick={props.handleClick}
         />
     </ul>
   )

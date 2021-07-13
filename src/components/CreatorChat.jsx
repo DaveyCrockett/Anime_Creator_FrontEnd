@@ -6,12 +6,11 @@ import 'react-chat-widget/lib/styles.css';
 
 function CreatorChat() {
   useEffect(() => {
-    addResponseMessage('Welcome to this awesome chat!');
+    addResponseMessage('Given response. Hello World!');
   }, []);
 
   const handleNewUserMessage = (newMessage) => {
     console.log(`New message incoming! ${newMessage}`);
-    // Now send the message throught the backend API
   };
 
     return (

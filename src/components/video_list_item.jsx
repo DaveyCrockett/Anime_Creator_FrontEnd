@@ -1,16 +1,17 @@
 import React from 'react';
 
-const VideoListItem = ({onVideoSelect, video, thumbnailUrl}) => {
+
+const VideoListItem = ({ video, thumbnailUrl, handleClick}) => {
   const videoUrl = `${thumbnailUrl}`;
   console.log(videoUrl)
   console.log(video)
 
 
   return (
-    <li onClick={() => onVideoSelect(video)} className="list-group-item">
+    <li  className="list-group-item">
       <div className="video-list media">
         <div className="media-left">
-          <img className="media-object" alt="searched video" src={videoUrl} />
+          <img className="media-object" alt="searched video" src={videoUrl} onClick={() => handleClick(video)} />
         </div>
         <div className="media-body">
           <div className="media-heading">{video.name}

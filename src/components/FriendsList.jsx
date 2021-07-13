@@ -36,21 +36,33 @@ class FriendList extends Component {
             })
     }
 
-
     async listOfFriends(){
-    try{
-        let response = await axios.get(API_BASE, {
-          headers: {
-            Authorization: `JWT ${localStorage.getItem('token')}`
-          }
-        })
-        this.setState({
-          comrade: response.data,
-      });
+      try{
+          let response = await axios.get(API_BASE, {
+            headers: {
+              Authorization: `JWT ${localStorage.getItem('token')}`
+            }
+          })
+          this.setState({
+            comrade: response.data,
+        });
+        }
+        catch (er){
+          console.log('ERROR in listOfFriends', er)
       }
-      catch (er){
-        console.log('ERROR in listOfFriends', er)
+  }
+
+  async deleteFriend(friendId){
+    try{
+      await axios.delete(`http://127.0.0.1:8000/Anime_Creator_App/friends/${friendId}`, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('token')}`
+        }
+      })
     }
+    catch (er){
+      console.log('ERROR in deleteFriend', er)
+  }
   }
 
   componentDidMount(){
@@ -73,7 +85,7 @@ class FriendList extends Component {
                   </form>
                   <ul>
                     {this.state.comrade.map((friend) => {
-                      return <li className="friendList" key={friend.id}>{friend.friend}</li>
+                      return <li className="friendList" key={friend.id}>{friend.friend}<button type="button" onClick={() => this.deleteFriend(friend.id)}>Delete</button></li>
                     })}
                   </ul>
                   

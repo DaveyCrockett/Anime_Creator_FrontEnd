@@ -5,12 +5,14 @@ import React from 'react';
 const { TextArea } = Input;
 
 const CommentList = ({ comments }) => (
-  <List
+    <div>
+    <List
     dataSource={comments}
     header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
     itemLayout="horizontal"
     renderItem={props => <Comment {...props} />}
   />
+    </div>
 );
 
 const Editor = ({ onChange, onSubmit, submitting, value }) => (
@@ -64,6 +66,7 @@ class Comments extends React.Component {
       value: e.target.value,
     });
   };
+  
 
   render() {
     const { comments, submitting, value } = this.state;
