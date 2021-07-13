@@ -18,8 +18,7 @@ class DeleteVideo extends Component {
 
 
     async removeVideo() {     
-
-        await axios.delete(`https://upload.wistia.com?access_token=ddb75193bc84dd96ae0139858aeb5c4c44a8e189cae04dccc4362a8ecc0e9fce&project_id=gil6c4acn6&url=${this.props.videoUrl}`, {
+        await axios.delete(` https://api.wistia.com/v1/medias/${this.props.hashedId}.json?access_token=ddb75193bc84dd96ae0139858aeb5c4c44a8e189cae04dccc4362a8ecc0e9fce`, {
             headers: {'Content-Type': 'multipart/form-data',},
         })
             .then(response => this.setState({
