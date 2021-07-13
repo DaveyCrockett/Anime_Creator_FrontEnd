@@ -10,9 +10,7 @@ class DeleteVideo extends Component {
         }
     }
 
-    handleSubmit(event) {
-    
-        event.preventDefault();
+    handleSubmit() {
         this.removeVideo();
     }
 
